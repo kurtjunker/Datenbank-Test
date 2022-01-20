@@ -31,9 +31,6 @@ docker-compose ps
 - Password: postgres
 
 ## Testaufgabe
-Verbindung mit der Datenbank herstellen:
-psql -h localhost -d docker -U docker
-Das Passwort ist postgres
 
 Ausgangssituation:
 Von unseren Partnern Hinz und Kunz haben wir Daten erhalten, die wir in unsere Datenbank einspielen sollen.
