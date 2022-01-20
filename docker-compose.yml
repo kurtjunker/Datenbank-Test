@@ -1,4 +1,8 @@
-version: "3.8"
+version: "3"
+
+volumes:
+  pgadmin:
+  pgdata:
 
 services:
   liquibase:
@@ -6,8 +10,8 @@ services:
     volumes:
       - ./db:/liquibase/db
       - ./liquibase.properties:/liquibase/liquibase.properties
-    profiles:
-      - manual
+    depends_on:
+      - postgres
 
   postgres:
     image: postgres:13.5
@@ -15,6 +19,18 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: docker
     volumes:
-      - ./.data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.org
+      PGADMIN_DEFAULT_PASSWORD: docker
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres

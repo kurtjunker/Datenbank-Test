@@ -8,12 +8,27 @@
 ````shell
 docker-compose up -d
 ````
+- prüfen ob die Container laufen
+````shell
+docker-compose ps
+````
 
 - changesets ausführen
 
 ```shell
 ./liquibase update
 ```
+## Datenbank-UI
+
+- als UI kommt pgadmin 4 als Container mit
+- Aufgerufen werden kann dieser über die Adresse localhost:5050
+- email: admin@example.org
+- password: docker
+- einen neuen Server anlegen
+- Adresse postgres
+- Datenbank: docker
+- User: docker
+- Password: postgres
 
 ## Testaufgabe
 Verbindung mit der Datenbank herstellen:
